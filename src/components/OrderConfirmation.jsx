@@ -16,7 +16,7 @@ function OrderConfirmation({ order }) {
       </h2>
       <br />
       {items?.map((item) => (
-        <div>
+        <div key={id}>
           <h4>
             {item.item.price}, {item.item.name}
           </h4>
