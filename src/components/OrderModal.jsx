@@ -12,7 +12,7 @@ function OrderModal({ order, setOrderModal }) {
   const [addErr, setAddErr] = useState(false);
 
   const navigate = useNavigate();
-  
+
   const placeOrder = async () => {
     const response = await fetch("/api/orders", {
       method: "POST",
@@ -27,19 +27,18 @@ function OrderModal({ order, setOrderModal }) {
       })
     });
     const data = await response.json();
-    console.log(data);
-    if(response.status === 200) {
-      navigate(`/order-confirmation/${data.id}`)
+    if (response.status === 200) {
+      navigate(`/order-confirmation/${data.id}`);
     }
   };
 
   const phoneValidation = (number) => {
     const comparison = /^\d{10}|[(),-]+$/;
     if (!comparison.test(number)) {
-      return true
+      return true;
     }
     return false;
-  }
+  };
 
   const fieldValidation = (n, p, a) => {
     if (!n) {
@@ -52,10 +51,10 @@ function OrderModal({ order, setOrderModal }) {
     } else {
       setPhoneErr(false);
     }
-    if(!a) {
+    if (!a) {
       setAddErr(true);
     } else {
-      setAddErr(false)
+      setAddErr(false);
     }
     if (n && p && a) {
       setNameErr(false);
@@ -67,7 +66,7 @@ function OrderModal({ order, setOrderModal }) {
         placeOrder();
       }
     }
-  }
+  };
 
   return (
     <>
@@ -127,17 +126,12 @@ function OrderModal({ order, setOrderModal }) {
           </div>
         </form>
 
-
         {addErr && (
-          <p className={ErrStyles.pulsetext}>
-            Please enter your address.
-          </p>
+          <p className={ErrStyles.pulsetext}>Please enter your address.</p>
         )}
 
         {nameErr && (
-          <p className={ErrStyles.pulsetext}>
-            Please enter your name.
-          </p>
+          <p className={ErrStyles.pulsetext}>Please enter your name.</p>
         )}
 
         {phoneErr && (
@@ -157,7 +151,7 @@ function OrderModal({ order, setOrderModal }) {
           </button>
           <button
             onClick={() => {
-                fieldValidation(name, phone, address)
+              fieldValidation(name, phone, address);
             }}
             className={styles.orderModalPlaceOrder}
           >

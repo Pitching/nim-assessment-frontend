@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import OrderConfirmation from "./OrderConfirmation";
 
 function ConfirmationPage() {
-  const [orderInfo, setOrderInfo ] = useState({});
+  const [orderInfo, setOrderInfo] = useState({});
   const { id } = useParams();
 
   const getOrder = async () => {
@@ -16,9 +16,7 @@ function ConfirmationPage() {
     getOrder();
   }, []);
 
-  return (
-    <OrderConfirmation order={orderInfo} />
-  );
+  return <OrderConfirmation order={orderInfo} />;
 }
 
 export default ConfirmationPage;
